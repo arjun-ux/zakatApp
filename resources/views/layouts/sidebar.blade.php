@@ -28,6 +28,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ route('zakat.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-box"></i>
+              <p>
+                Zakat
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ route('userIndex') }}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>

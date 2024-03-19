@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboarController;
 use App\Http\Controllers\PenampungController;
+use App\Http\Controllers\ZakatController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/unauthorized-page', function () {
@@ -13,8 +14,13 @@ Route::post('/', [AuthController::class, 'doLogin'])->name('doLogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('role:admin,user')->group(function(){
+    // dashboard
     Route::get('/dashboard', [DashboarController::class, 'index'])->name('dashboard');
-
+    // zakat
+    Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
+    Route::post('/zakat', [ZakatController::class, 'store'])->name('zakat.store');
+    Route::get('/zakat/{id}', [ZakatController::class, 'edit'])->name('zakat.edit');
+    Route::delete('/zakat/{id}', [ZakatController::class, 'delete'])->name('zakat.delete');
 });
 Route::middleware('role:admin')->group(function(){
     // penampung
