@@ -20,12 +20,14 @@ Route::middleware('role:admin,user')->group(function(){
     Route::get('/zakat', [ZakatController::class, 'index'])->name('zakat.index');
     Route::post('/zakat', [ZakatController::class, 'store'])->name('zakat.store');
     Route::get('/zakat/{id}', [ZakatController::class, 'edit'])->name('zakat.edit');
+    Route::post('/zakat/{id}/update', [ZakatController::class, 'update'])->name('zakat.update');
     Route::delete('/zakat/{id}', [ZakatController::class, 'delete'])->name('zakat.delete');
-});
-Route::middleware('role:admin')->group(function(){
     // penampung
     Route::get('/penampung', [PenampungController::class, 'index'])->name('penampung.index');
     Route::post('/penampung', [PenampungController::class, 'store'])->name('penampung.store');
+});
+Route::middleware('role:admin')->group(function(){
+    // penampung
     Route::get('/penampung/{id}/edit', [PenampungController::class, 'edit'])->name('penampung.edit');
     Route::post('/penampung/{id}/update', [PenampungController::class, 'update'])->name('penampung.update');
     Route::delete('penampung/{id}', [PenampungController::class, 'delete'])->name('penampung.delete');

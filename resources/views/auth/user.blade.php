@@ -38,6 +38,16 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="inputName" class="col-sm-2 col-form-label">Role</label>
+                            <div class="col-sm-10">
+                              <select class="form-control form-select" name="role">
+                                <option value="">Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
                               <input type="text" class="form-control" id="inputPassword" name="password">
@@ -91,7 +101,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Hapus Penampungan</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>

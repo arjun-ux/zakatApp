@@ -46,11 +46,15 @@ class AuthController extends Controller
     // doregistter
     public function doRegister(Request $request){
         $request->validate([
-            //
+            'name' => 'required',
+            'username' => 'required',
+            'role' => 'required',
+            'password' => 'required',
         ]);
         User::create([
             'name' => $request->name,
             'username' => $request->username,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
         return back()-> with('sukses', 'Berhasil Menambahkan User');

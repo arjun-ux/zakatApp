@@ -39,6 +39,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Role</label>
+                        <div class="col-sm-10">
+                          <select class="form-control form-select" name="role">
+                            <option value="">Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
                           <input type="password" class="form-control" id="inputPassword" name="password">
