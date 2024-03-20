@@ -6,7 +6,6 @@
     <title>ZakatApp | Login</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 </head>
-
   <body>
       @yield('content')
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

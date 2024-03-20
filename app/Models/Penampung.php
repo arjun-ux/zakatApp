@@ -15,4 +15,8 @@ class Penampung extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public function Zakat(): BelongsTo
+    {
+        return $this->belongsTo(Zakat::class, 'zakat_id', 'id');
+    }
 }

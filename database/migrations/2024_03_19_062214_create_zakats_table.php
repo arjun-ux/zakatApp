@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('pemberi_zakat')->nullable();
             $table->string('lokasi')->nullable();
             $table->string('jumlah')->nullable();
+            $table->string('status')->default('Undangan');
             $table->timestamps();
         });
     }
