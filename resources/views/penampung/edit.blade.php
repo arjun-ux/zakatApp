@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Tempat Penampung : <strong>{{ $penampung->nama }}</strong></h1>
+            <h1 class="m-0">Tempat Penampung : <strong>{{ $penampung->tempat_penampung }}</strong></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -27,29 +27,21 @@
                 <form action="{{ route('penampung.update', $penampung->id) }}" method="post">
                     @csrf
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Penanggung Jawab</label>
-                        <div class="col-sm-10">
-                          <select class="form-control form-select" name="user_id">
-                            <option value="{{ old('user_id', $penampung->User->id) }}">{{ old('user_id', $penampung->User->name) }}</option>
-                            @foreach ($user as $v)
-                            <option value="{{ $v->id }}">{{ $v->name }}</option>
-                            @endforeach
-                          </select>
+                        <label for="inputName" class="col-sm-4 col-form-label">Penampungan</label>
+                        <div class="col-sm-8">
+                          <input type="text" id="inputName" class="form-control" name="tempat_penampung"
+                          value="{{ old('tempat_penampung', $penampung->tempat_penampung) }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputUsername" class="col-sm-2 col-form-label">Nama</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputUsername" name="nama" value="{{ old('nama', $penampung->nama) }}">
+                        <label for="inputLokasi" class="col-sm-4 col-form-label">Lokasi</label>
+                        <div class="col-sm-8">
+                          <input type="text" id="inputLokasi" class="form-control" name="lokasi_penampung"
+                          value="{{ old('lokasi_penampung', $penampung->lokasi_penampung) }}">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="inputUsername" class="col-sm-2 col-form-label">Lokasi</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputUsername" name="lokasi" value="{{ old('lokasi', $penampung->lokasi) }}">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                    <a href="{{ route('penampung.index') }}" class="btn btn-warning">Exit</a>
                 </form>
             </div>
         </div>

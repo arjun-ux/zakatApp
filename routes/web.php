@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboarController;
+use App\Http\Controllers\DetailPenampungController;
 use App\Http\Controllers\PenampungController;
 use App\Http\Controllers\ZakatController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,9 @@ Route::middleware('role:admin,user')->group(function(){
     // penampung
     Route::get('/penampung', [PenampungController::class, 'index'])->name('penampung.index');
     Route::post('/penampung', [PenampungController::class, 'store'])->name('penampung.store');
+    // detail penampung
+    Route::get('/detail_penampung/{id}', [DetailPenampungController::class, 'index'])->name('detail_penampung.index');
+    Route::get('/go_penampung/{id}', [ZakatController::class, 'goPenampung'])->name('goPenampung');
 });
 Route::middleware('role:admin')->group(function(){
     // penampung

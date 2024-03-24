@@ -12,59 +12,46 @@ class PenampungController extends Controller
 {
     // index
     public function index(){
-        // dd($penampung);
-        if (Auth::user()->role == 'admin') {
-            $userAll = User::all();
-            $zakatAll = Zakat::all();
-            $penampung = Penampung::with(['User', 'Zakat'])->get();
-            return view('penampung.index', compact('userAll', 'zakatAll', 'penampung'));
-        }
-        $user_id = Auth::user()->id;
-        $user = User::where('id', $user_id )->first();
-        $zakat = Zakat::where('user_id', $user_id)->first();
-        $penampung = Penampung::with(['User', 'Zakat'])->get();
-        return view('penampung.index', compact('user', 'zakat', 'penampung'));
+        $penampung = Penampung::all();
+        return view('penampung.index', compact('penampung'));
     }
     // create
     public function store(Request $request){
         $request->validate([
             //
         ]);
-        $zakat = Zakat::where('id', $request->zakat_id)->first();
-
-        $data = new Penampung();
-        $data->user_id = $request->user_id;
-        $data->zakat_id = $request->zakat_id;
-        $data->jumlah = $zakat->jumlah;
-        $data->save();
-
-        $zakat->update([
-            'status' => 'Di Penampung',
-        ]);
-        return back()->with('suksess', 'Berhasil Menambahkan Data');
+        if ($request) {
+            Penampung::create([
+                'tempat_penampung' => $request->tempat_penampung,
+                'lokasi_penampung' => $request->lokasi_penampung,
+            ]);
+            return redirect()->back()->with('suksess', 'Berhasil Menambahkan Data');
+        }
+        return back()->with('error', 'Gagal Input Penampungan');
     }
     // edit
     public function edit($id){
-        $user = User::all();
-        $penampung = Penampung::with('User')->where('id', $id)->first();
-        return view('penampung.edit', compact('penampung', 'user'));
+        $penampung = Penampung::where('id', $id)->first();
+        return view('penampung.edit', compact('penampung'));
     }
     // update
     public function update(Request $request, $id){
         $request->validate([
             //
         ]);
-        $data = Penampung::where('id', $id)->first();
-        $data->update([
-            'user_id' => $request->user_id,
-            'nama' => $request->nama,
-            'lokasi' => $request->lokasi,
-        ]);
-        return redirect()->route('penampung.index')->with('success', 'Berhasil Update Data');
+        if ($request) {
+            $data = Penampung::where('id', $id)->first();
+            $data->update([
+                'tempat_penampung' => $request->tempat_penampung,
+                'lokasi_penampung' => $request->lokasi_penampung,
+            ]);
+            return redirect()->route('penampung.index')->with('success', 'Berhasil Update Data');
+        }
+        return back()->with('error', 'Gagal Update Penampungan');
     }
     // delete
     public function delete($id){
-        $data = Penampung::where('id', $id)->first();
+        $data = Penampung::find($id);
         $data->delete();
         return back()->with('success', 'Berhasil Hapus Data');
     }

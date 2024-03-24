@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('plugins/toastr/toastr.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -43,5 +43,6 @@
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 {{--  boostrap 4  --}}
 <script src="{{ asset('js/bootstrap4.bundle.min.js') }}"></script>
+<script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 </body>
 </html>

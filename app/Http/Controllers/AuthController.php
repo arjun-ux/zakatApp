@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penampung;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,8 @@ class AuthController extends Controller
     //  user
     public function userIndex(){
         $users = User::all();
-        return view('auth.user', compact('users'));
+        $penampung = Penampung::all();
+        return view('auth.user', compact('users', 'penampung'));
     }
     // doregistter
     public function doRegister(Request $request){
@@ -49,15 +51,17 @@ class AuthController extends Controller
             'name' => 'required',
             'username' => 'required',
             'role' => 'required',
+            'penampung_id' => 'required',
             'password' => 'required',
         ]);
         User::create([
             'name' => $request->name,
             'username' => $request->username,
             'role' => $request->role,
+            'penampung_id' => $request->penampung_id,
             'password' => Hash::make($request->password),
         ]);
-        return back()-> with('sukses', 'Berhasil Menambahkan User');
+        return back()-> with('success', 'Berhasil Menambahkan User');
     }
     // edit user
     public function edit($id){
@@ -83,7 +87,7 @@ class AuthController extends Controller
     }
     // delete user
     public function delete($id){
-        $user = User::where('id', $id)->first();
+        $user = User::find($id);
         if ($user->id == 1) {
             return back()->with('error', 'Admin Berkuasa Tidak Bisa Di Hapus');
         }

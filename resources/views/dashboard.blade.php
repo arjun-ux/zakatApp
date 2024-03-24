@@ -22,7 +22,22 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        Selamat Datang, {{ Auth::user()->username }}
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        Zakat
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        Penampung
+                    </div>
+                </div>
+            </div>
+        </div>
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->

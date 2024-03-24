@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('penampungs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('zakat_id')->nullable();
-            $table->integer('jumlah')->nullable();
+            $table->string('tempat_penampung')->nullable();
+            $table->string('lokasi_penampung')->nullable();
+            $table->integer('total')->default(0);
             $table->timestamps();
         });
     }

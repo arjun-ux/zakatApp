@@ -44,6 +44,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="inputPbrZkt" class="col-sm-4 col-form-label">No Tlpn</label>
+                                    <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputPbrZkt" name="no_hp" placeholder="No Tlpn (Optional)">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="inputLokasi" class="col-sm-4 col-form-label">Lokasi</label>
                                     <div class="col-sm-8">
                                     <input type="text" class="form-control" id="inputLokasi" name="lokasi" placeholder="Lokasi">
@@ -60,6 +66,12 @@
                                     <label for="inputPbrZkt" class="col-sm-4 col-form-label">Pemberi Zakat</label>
                                     <div class="col-sm-8">
                                     <input type="text" class="form-control" id="inputPbrZkt" name="pemberi_zakat" placeholder="Nama Masjid / Nama Orang">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPbrZkt" class="col-sm-4 col-form-label">No Tlpn</label>
+                                    <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputPbrZkt" name="no_hp" placeholder="No Tlpn (Optional)">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -93,6 +105,7 @@
                         <th>No</th>
                         <th>Png Jawab</th>
                         <th>Nama</th>
+                        <th>No Tlpn</th>
                         <th>Lokasi</th>
                         <th>Jumlah</th>
                         <th>Status</th>
@@ -106,6 +119,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $v->User->name }}</td>
                                 <td>{{ $v->pemberi_zakat }}</td>
+                                <td>{{ $v->no_hp }}</td>
                                 <td>{{ $v->lokasi }}</td>
                                 <td>{{ $v->jumlah }}</td>
                                 @if ($v->status == 'Undangan')
@@ -114,7 +128,7 @@
                                     </td>
                                 @elseif ($v->status == 'Di Ambil')
                                     <td>
-                                        <a href="#" class="btn btn-warning" style="font-size: 10px">{{ $v->status }}</a>
+                                        <a href="{{ route('goPenampung', $v->id) }}" class="btn btn-warning" style="font-size: 10px">{{ $v->status }}</a>
                                     </td>
                                 @elseif ($v->status == 'Di Penampung')
                                     <td>
@@ -133,6 +147,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $v->User->name }}</td>
                                 <td>{{ $v->pemberi_zakat }}</td>
+                                <td>{{ $v->no_hp }}</td>
                                 <td>{{ $v->lokasi }}</td>
                                 <td>{{ $v->jumlah }}</td>
                                 @if ($v->status == 'Undangan')
@@ -144,7 +159,7 @@
                                     </td>
                                 @elseif ($v->status == 'Di Ambil')
                                     <td>
-                                        <a href="#" class="btn btn-warning" style="font-size: 10px">{{ $v->status }}</a>
+                                        <a href="{{ route('goPenampung', $v->id) }}" target="_blank" class="btn btn-warning" style="font-size: 10px">{{ $v->status }}</a>
                                     </td>
                                     <td>
                                         <a href="{{ route('zakat.edit', $v->id) }}" class="btn btn-warning" style="font-size: 10px"><i class="fas fa-pen"></i></a>
